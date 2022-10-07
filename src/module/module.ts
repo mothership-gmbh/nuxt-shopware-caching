@@ -26,4 +26,4 @@ const cacheModule: Module = function(){
 }
 
 export default cacheModule;
-export const meta = require('../package.json');
+export const meta = require('../../package.json');
