@@ -1,0 +1,41 @@
+{
+  "name": "@mothership-gmbh/nuxt-shopware-caching",
+  "version": "1.0.0",
+  "description": "Nuxt-Module, that provides a system to set shopware cache-tags for later use in e.g. a full-page cache",
+  "main": "lib/module.js",
+  "files": [
+    "dist"
+  ],
+  "types": "dist/dts/useCache.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mothership-gmbh/nuxt-shopware-caching.git"
+  },
+  "keywords": [
+    "nuxt",
+    "shopware",
+    "caching"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mothership-gmbh/nuxt-shopware-caching/issues"
+  },
+  "homepage": "https://github.com/mothership-gmbh/nuxt-shopware-caching#readme",
+  "scripts": {
+    "build": "rollup --config"
+  },
+  "dependencies": {
+    "vue-demi": "^0.13.11"
+  },
+  "peerDependencies": {
+    "@vue/composition-api": "^1.4.0",
+    "vue": "^2.0.0 || >=3.0.0"
+  },
+  "devDependencies": {
+    "@rollup/plugin-typescript": "^8.5.0",
+    "rollup": "^2.79.1",
+    "tslib": "^2.4.0",
+    "typescript": "^4.8.4",
+    "vue": "^3.2.40"
+  }
+}
