@@ -2,7 +2,7 @@
   "name": "@mothership-gmbh/nuxt-shopware-caching",
   "version": "1.0.0",
   "description": "Nuxt-Module, that provides a system to set shopware cache-tags for later use in e.g. a full-page cache",
-  "main": "lib/module.js",
+  "main": "dist/module.js",
   "files": [
     "dist"
   ],
