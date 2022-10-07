@@ -1,5 +1,1 @@
-import {useCache} from "./composables/useCache";
-
-export default {
-    useCache
-}
+export * from "./composables/useCache";
