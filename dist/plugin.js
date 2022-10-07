@@ -1,21 +1,21 @@
-var plugin = ({ app }, inject) => {
-  const cache = {
-    tags: [],
-  };
+'use strict';
 
-  const addCacheTag = (tag) => {
-    if (!cache.tags.includes(tag)) {
-      cache.tags.push(tag);
+var plugin = function (_a, inject) {
+    var app = _a.app;
+    var cache = {
+        tags: []
+    };
+    var addCacheTag = function (tag) {
+        if (!cache.tags.includes(tag)) {
+            cache.tags.push(tag);
+        }
+    };
+    var getCacheTags = function () { return cache.tags; };
+    var cacheTags = { addCacheTag: addCacheTag, getCacheTags: getCacheTags, cache: cache };
+    if (process.server) {
+        app['context'].ssrContext.$cacheTags = cacheTags;
     }
-  };
-  const getCacheTags = () => cache.tags;
-
-  const cacheTags = { addCacheTag, getCacheTags, cache };
-  if (process.server) {
-    app.context.ssrContext.cacheTags = cacheTags;
-  }
-
-  inject("cacheTags", cacheTags);
+    inject("cacheTags", cacheTags);
 };
 
-export { plugin as default };
+module.exports = plugin;

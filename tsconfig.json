@@ -26,7 +26,8 @@
     "skipDefaultLibCheck": true,
     "skipLibCheck": true,
     "declaration": true,
-    "declarationDir": "dist/dts"
+    "declarationDir": "dist/dts",
+    "types": ["node", "@nuxt/types"]
   },
   "include": ["./src/**/*.ts"]
 }

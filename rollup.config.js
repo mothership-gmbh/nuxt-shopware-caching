@@ -1,37 +1,59 @@
 // @ts-check
-
 import typescript from '@rollup/plugin-typescript';
 
-
-/**
- * Creates an output options object for Rollup.js.
- * @param {import('rollup').OutputOptions} options
- * @returns {import('rollup').OutputOptions}
- */
-function createOutputOptions(options) {
-    return {
-        banner,
-        name: '[libraryCamelCaseName]',
-        exports: 'named',
-        sourcemap: true,
-        ...options,
-    };
-}
+import pkg from './package.json';
 
 /**
  * @type {import('rollup').RollupOptions}
  */
-const options = {
-    input: ['./src/module.js', './src/plugin.js', './src/useCache.ts'],
-    external: "vue-demi",
-    output: {
-        dir: 'dist'
+const options = [
+    {
+        input: './src/module.ts',
+        output: [
+            {
+                file: 'dist/module.cjs.js',
+                format: 'cjs'
+            },
+            {
+                file: 'dist/module.mjs',
+                format: 'esm'
+            }
+        ],
+        plugins: [
+            typescript({
+                tsconfig: './tsconfig.json',
+            }),
+        ],
     },
-    plugins: [
-        typescript({
-            tsconfig: './tsconfig.json',
-        }),
-    ],
-};
+    {
+        input: './src/plugin.ts',
+        output: [
+            {
+                file: 'dist/plugin.js',
+                format: 'cjs'
+            }
+        ],
+        plugins: [
+            typescript({
+                tsconfig: './tsconfig.json',
+            }),
+        ],
+    },
+    {
+        input: './src/useCache.ts',
+        output: [
+            {
+                file: 'dist/useCache.mjs',
+                format: 'esm'
+            }
+        ],
+        external: "vue-demi",
+        plugins: [
+            typescript({
+                tsconfig: './tsconfig.json',
+            }),
+        ],
+    }
+]
 
 export default options;
