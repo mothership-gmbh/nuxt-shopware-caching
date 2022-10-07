@@ -17,6 +17,6 @@ var cacheModule = function () {
         }
     });
 };
-var meta = require('../package.json');
+var meta = require('../../package.json');
 
 export { cacheModule as default, meta };
