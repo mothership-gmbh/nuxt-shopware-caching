@@ -45,6 +45,10 @@ const options = [
             {
                 file: 'dist/index.mjs',
                 format: 'esm'
+            },
+            {
+                file: 'dist/index.cjs.js',
+                format: 'cjs'
             }
         ],
         external: "vue-demi",

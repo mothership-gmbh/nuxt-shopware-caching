@@ -3,12 +3,17 @@
   "version": "1.0.0",
   "description": "Nuxt-Module, that provides a system to set shopware cache-tags for later use in e.g. a full-page cache",
   "module": "dist/index.mjs",
+  "main": "dist/index.cjs.js",
   "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
   "exports": {
-    ".": "./dist/index.mjs",
+    ".": {
+      "require": "./dist/index.mjs",
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
+    },
     "./module": {
       "require": "./dist/module/module.cjs.js",
       "import": "./dist/module/module.mjs",
