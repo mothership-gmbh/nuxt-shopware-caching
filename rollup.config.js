@@ -8,14 +8,14 @@ import pkg from './package.json';
  */
 const options = [
     {
-        input: './src/module.ts',
+        input: './src/module/module.ts',
         output: [
             {
-                file: 'dist/module.cjs.js',
+                file: 'dist/module/module.cjs.js',
                 format: 'cjs'
             },
             {
-                file: 'dist/module.mjs',
+                file: 'dist/module/module.mjs',
                 format: 'esm'
             }
         ],
@@ -26,10 +26,10 @@ const options = [
         ],
     },
     {
-        input: './src/plugin.ts',
+        input: './src/module/plugin.ts',
         output: [
             {
-                file: 'dist/plugin.js',
+                file: 'dist/module/plugin.js',
                 format: 'cjs'
             }
         ],
@@ -40,10 +40,10 @@ const options = [
         ],
     },
     {
-        input: './src/useCache.ts',
+        input: './src/index.ts',
         output: [
             {
-                file: 'dist/useCache.mjs',
+                file: 'dist/index.mjs',
                 format: 'esm'
             }
         ],

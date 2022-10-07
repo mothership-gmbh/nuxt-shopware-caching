@@ -40,4 +40,8 @@ var useCache = function () {
     };
 };
 
-export { useCache };
+var index = {
+    useCache: useCache
+};
+
+export { index as default };
