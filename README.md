@@ -3,7 +3,9 @@ Nuxt-Module, that provides a system to set shopware cache-tags for later use in 
 This module is meant to be used together with the [companion bundle for Shopware](https://github.com/mothership-gmbh/headless-shopware-varnish-cache)
 
 # Installation
-- Yarn: `yarn add mothership-gmbh/nuxt-shopware-caching` (currently directly from GitHub-repo)
+- NPM: `npm install @mothership-gmbh/nuxt-shopware-caching`
+- pnpm: `pnpm install @mothership-gmbh/nuxt-shopware-caching`
+- Yarn: `yarn add @mothership-gmbh/nuxt-shopware-caching`
 
 # Usage
 ## Add the module
