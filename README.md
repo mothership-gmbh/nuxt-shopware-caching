@@ -13,7 +13,7 @@ Add the module in your `nuxt.config.js`:
 ```js
 {
     modules: [
-        "@mothership-gmbh/nuxt-shopware-caching/module"
+        "@mothership-gmbh/nuxt-shopware-caching"
     ],
         
     nuxtShopwareCaching: {
@@ -24,25 +24,21 @@ Add the module in your `nuxt.config.js`:
 
 ## Use the composable in your vue components
 
-```js
-import { useCache } from "@mothership-gmbh/nuxt-shopware-caching"
-
-export default {
-    setup(props) {
-        const {addProductCacheTag} = useCache();
-        addProductCacheTag(props.productId);
-    }
-}
+```vue
+<script setup>
+  const {addProductCacheTag} = useCache();
+  addProductCacheTag('1234');
+</script>
 ```
-The module will then aggregate all cache tags on the page and attach them 
-- in a comma-separated list to the HTTP response as a `X-Cache-Tags`-header 
+The module will then aggregate all cache tags on the page and attach them
+- in a comma-separated list to the HTTP response as a `X-Cache-Tags`-header
 - in a space-separated list to the HTTP response as a `xkey`-header (if you provided the option in your nuxt config).
 
-Example HTTP-Response headers: 
+Example HTTP-Response headers:
 ```
 X-Cache-Tags: topbar-route,base-navigation,navigation-route-e41d381d990346bebff2a736b7b12c5c,cms-page-da2ad0281b4d4fc4ae7c6f3a68700e59,product-5b5e2f24dced46cdba488c01b9c12130,product-1c150aab458940c28a30202abc404b96
 ```
-or 
+or
 ```
 X-Cache-Tags: topbar-route base-navigation navigation-route-e41d381d990346bebff2a736b7b12c5c cms-page-da2ad0281b4d4fc4ae7c6f3a68700e59 product-5b5e2f24dced46cdba488c01b9c12130 product-1c150aab458940c28a30202abc404b96
 ```
@@ -61,3 +57,8 @@ export declare const useCache: () => {
     addLandingPageCacheTag: (landingPageId: string) => void;
 };
 ```
+
+## Development
+
+- Run `npm run dev:prepare` to generate type stubs.
+- Use `npm run dev` to start [playground](./playground) in development mode.

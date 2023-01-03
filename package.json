@@ -1,56 +1,34 @@
 {
   "name": "@mothership-gmbh/nuxt-shopware-caching",
-  "version": "1.1.0",
-  "description": "Nuxt-Module, that provides a system to set shopware cache-tags for later use in e.g. a full-page cache",
-  "module": "dist/index.js",
-  "main": "dist/index.cjs.js",
-  "types": "dist/index.d.ts",
+  "version": "2.0.0",
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/module.mjs",
+      "require": "./dist/module.cjs"
+    }
+  },
+  "main": "./dist/module.cjs",
+  "types": "./dist/types.d.ts",
   "files": [
     "dist"
   ],
-  "exports": {
-    ".": {
-      "require": "./dist/index.cjs.js",
-      "import": "./dist/index.js",
-      "types": "./dist/index.d.ts"
-    },
-    "./module": {
-      "require": "./dist/module/module.cjs.js",
-      "import": "./dist/module/module.mjs",
-      "types": "./dist/module/module.d.ts"
-    }
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mothership-gmbh/nuxt-shopware-caching.git"
-  },
-  "keywords": [
-    "nuxt",
-    "shopware",
-    "caching"
-  ],
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/mothership-gmbh/nuxt-shopware-caching/issues"
-  },
-  "homepage": "https://github.com/mothership-gmbh/nuxt-shopware-caching#readme",
   "scripts": {
-    "build": "rollup --config"
+    "prepack": "nuxt-module-build",
+    "dev": "nuxi dev playground",
+    "dev:build": "nuxi build playground",
+    "dev:prepare": "nuxt-module-build --stub && nuxi prepare playground"
   },
   "dependencies": {
-    "vue-demi": "^0.13.11"
-  },
-  "peerDependencies": {
-    "@vue/composition-api": "^1.4.0",
-    "vue": "^2.0.0 || >=3.0.0"
+    "@nuxt/kit": "^3.0.0",
+    "nuxt-cache-keys": "^1.0.1"
   },
   "devDependencies": {
-    "@nuxt/types": "^2.15.8",
-    "@rollup/plugin-typescript": "^8.5.0",
-    "@types/node": "^18.8.3",
-    "rollup": "^2.79.1",
-    "tslib": "^2.4.0",
-    "typescript": "^4.8.4",
-    "vue": "^3.2.40"
+    "@nuxt/module-builder": "^0.2.1",
+    "@nuxt/schema": "^3.0.0",
+    "@nuxtjs/eslint-config-typescript": "^12.0.0",
+    "eslint": "^8.29.0",
+    "nuxt": "^3.0.0"
   }
 }
