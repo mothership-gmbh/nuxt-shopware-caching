@@ -17,7 +17,9 @@ Add the module in your `nuxt.config.js`:
     ],
         
     nuxtShopwareCaching: {
-        useXKey: true // Optional: set to true if you intend to use Varnish xkey 
+        cacheKeyHeader: 'X-Cache-Tags', // Optional
+        cacheKeySeparator: ',',  // Optional
+        useXKey: true // Optional: set to true if you intend to use Varnish xkey. If set, also overrides cacheKeyHeader and cacheKeySeparator accordingly.
     }
 }
 ```
@@ -31,7 +33,7 @@ Add the module in your `nuxt.config.js`:
 </script>
 ```
 The module will then aggregate all cache tags on the page and attach them
-- in a comma-separated list to the HTTP response as a `X-Cache-Tags`-header
+- in a comma-separated list to the HTTP response as a `X-Cache-Tags`-header (default configuration)
 - in a space-separated list to the HTTP response as a `xkey`-header (if you provided the option in your nuxt config).
 
 Example HTTP-Response headers:
@@ -40,7 +42,7 @@ X-Cache-Tags: topbar-route,base-navigation,navigation-route-e41d381d990346bebff2
 ```
 or
 ```
-X-Cache-Tags: topbar-route base-navigation navigation-route-e41d381d990346bebff2a736b7b12c5c cms-page-da2ad0281b4d4fc4ae7c6f3a68700e59 product-5b5e2f24dced46cdba488c01b9c12130 product-1c150aab458940c28a30202abc404b96
+xkey: topbar-route base-navigation navigation-route-e41d381d990346bebff2a736b7b12c5c cms-page-da2ad0281b4d4fc4ae7c6f3a68700e59 product-5b5e2f24dced46cdba488c01b9c12130 product-1c150aab458940c28a30202abc404b96
 ```
 
 ## Reference

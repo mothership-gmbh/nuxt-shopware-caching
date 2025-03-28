@@ -3,6 +3,8 @@ import { defineNuxtModule, createResolver, addImportsDir, installModule } from '
 
 export interface ModuleOptions {
   useXKey?: boolean
+  cacheKeyHeader?: string
+  cacheKeySeparator?: string
 }
 
 export default defineNuxtModule<ModuleOptions>({
@@ -14,7 +16,9 @@ export default defineNuxtModule<ModuleOptions>({
     }
   },
   defaults: {
-    useXKey: false
+    useXKey: false,
+    cacheKeyHeader: 'X-Cache-Tags',
+    cacheKeySeparator: ','
   },
   async setup (options, nuxt) {
     const { resolve } = createResolver(import.meta.url)
@@ -22,10 +26,17 @@ export default defineNuxtModule<ModuleOptions>({
     nuxt.options.build.transpile.push(runtimeDir)
     addImportsDir(resolve(runtimeDir, 'composables'))
 
+    let cacheKeyHeader = options.cacheKeyHeader
+    let cacheKeySeparator = options.cacheKeySeparator
+    if (options.useXKey) {
+      cacheKeyHeader = 'xkey'
+      cacheKeySeparator = ' '
+    }
+
     // automatically install the dependency-module
     await installModule('nuxt-cache-keys', {
-      cacheKeyHeader: options.useXKey ? 'xkey' : 'X-Cache-Tags',
-      cacheKeySeparator: options.useXKey ? ' ' : ','
+      cacheKeyHeader,
+      cacheKeySeparator
     })
   }
 })
