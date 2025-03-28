@@ -1,10 +1,11 @@
 {
   "name": "@mothership-gmbh/nuxt-shopware-caching",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "license": "MIT",
   "type": "module",
   "exports": {
     ".": {
+      "types": "./dist/types.d.ts",
       "import": "./dist/module.mjs",
       "require": "./dist/module.cjs"
     }
@@ -15,20 +16,20 @@
     "dist"
   ],
   "scripts": {
-    "prepack": "nuxt-module-build",
+    "prepack": "nuxt-module-build build",
     "dev": "nuxi dev playground",
     "dev:build": "nuxi build playground",
-    "dev:prepare": "nuxt-module-build --stub && nuxi prepare playground"
+    "dev:prepare": "nuxt-module-build build --stub && nuxi prepare playground"
   },
   "dependencies": {
     "@nuxt/kit": "^3.0.0",
     "nuxt-cache-keys": "^1.0.1"
   },
   "devDependencies": {
-    "@nuxt/module-builder": "^0.2.1",
+    "@nuxt/eslint": "^1.2.0",
+    "@nuxt/module-builder": "^0.8.4",
     "@nuxt/schema": "^3.0.0",
-    "@nuxtjs/eslint-config-typescript": "^12.0.0",
-    "eslint": "^8.29.0",
+    "eslint": "^9.23.0",
     "nuxt": "^3.0.0"
   }
 }
